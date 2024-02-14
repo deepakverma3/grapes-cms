@@ -23,6 +23,24 @@ var editor = grapesjs.init({
       modalImportContent: function (editor) {
         return editor.getHtml() + "<style>" + editor.getCss() + "</style>";
       },
+      devices: [
+        [
+          { id: "desktop", name: "Desktop", width: "" },
+          { id: "tablet", name: "Tablet", width: "770px", widthMedia: "992px" },
+          {
+            id: "mobileLandscape",
+            name: "Mobile landscape",
+            width: "568px",
+            widthMedia: "768px",
+          },
+          {
+            id: "mobilePortrait",
+            name: "Mobile portrait",
+            width: "320px",
+            widthMedia: "480px",
+          },
+        ],
+      ],
     },
   },
   styleManager: {
@@ -233,6 +251,33 @@ const blockButton = document.getElementById("block-icon");
 const blocks = document.getElementById("blocks");
 const blockIcon = document.getElementById("block-icon");
 
+// Function to change the device view
+function changeDevice(deviceId) {
+  editor.setDevice(deviceId);
+}
+
+// Create a dropdown for selecting devices
+const container = document.getElementById("basic-actions");
+const deviceDropdown = document.createElement("select");
+deviceDropdown.classList.add("form-select");
+deviceDropdown.classList.add("form-select-sm");
+deviceDropdown.classList.add("custom-select");
+// Add options to the dropdown based on available devices
+editor.Devices.getAll().forEach((device) => {
+  const option = document.createElement("option");
+  option.value = device.attributes.id;
+  option.text = device.attributes.name;
+  deviceDropdown.appendChild(option);
+});
+deviceDropdown.addEventListener("change", function () {
+  const selectedDevice = this.value;
+  changeDevice(selectedDevice);
+});
+
+// Add the dropdown to the page
+
+container.insertBefore(deviceDropdown, container.firstChild);
+
 let isCross = false;
 
 blockButton.addEventListener("click", function () {
@@ -282,31 +327,31 @@ editor.on("load", function () {
   var $ = grapesjs.$;
 
   // Add and beautify tooltips
-  [
-    ["sw-visibility", "Show Borders"],
-    ["preview", "Preview"],
-    ["fullscreen", "Fullscreen"],
-    ["export-template", "Export"],
-    ["undo", "Undo"],
-    ["redo", "Redo"],
-    ["gjs-open-import-webpage", "Import"],
-    ["canvas-clear", "Clear canvas"],
-  ].forEach(function (item) {
-    panelManager.getButton("options", item[0]).set("attributes", {
-      title: item[1],
-      "data-tooltip-pos": "bottom",
-    });
-  });
-  [
-    ["open-sm", "Style Manager"],
-    ["open-layers", "Layers"],
-    ["open-blocks", "Blocks"],
-  ].forEach(function (item) {
-    panelManager.getButton("views", item[0]).set("attributes", {
-      title: item[1],
-      "data-tooltip-pos": "bottom",
-    });
-  });
+  // [
+  //   ["sw-visibility", "Show Borders"],
+  //   ["preview", "Preview"],
+  //   ["fullscreen", "Fullscreen"],
+  //   ["export-template", "Export"],
+  //   ["undo", "Undo"],
+  //   ["redo", "Redo"],
+  //   ["gjs-open-import-webpage", "Import"],
+  //   ["canvas-clear", "Clear canvas"],
+  // ].forEach(function (item) {
+  //   panelManager.getButton("options", item[0]).set("attributes", {
+  //     title: item[1],
+  //     "data-tooltip-pos": "bottom",
+  //   });
+  // });
+  // [
+  //   ["open-sm", "Style Manager"],
+  //   ["open-layers", "Layers"],
+  //   ["open-blocks", "Blocks"],
+  // ].forEach(function (item) {
+  //   panelManager.getButton("views", item[0]).set("attributes", {
+  //     title: item[1],
+  //     "data-tooltip-pos": "bottom",
+  //   });
+  // });
 
   editor.on("load", () => {
     editor.BlockManager.render([
@@ -317,5 +362,13 @@ editor.on("load", function () {
       bm.get("image").set("category", ""),
       bm.get("video").set("category", ""),
     ]);
+  });
+
+  // tooltip
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 });
