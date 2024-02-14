@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrapesJS Website</title>
+    <link rel="stylesheet" href="./assets/grapesJs/grapes.min.css" />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+    <script></script>
+  </head>
+  <body>
+    <div class="row" style="height: 100%">
+      <div id="style-manager" class="column" style="flex-basis: 500px">
+        <div class="style-heading">Style Manager</div>
+        <br />
+        <div id="selectors-container"></div>
+        <div id="traits-container"></div>
+        <div id="style-manager-container"></div>
+        <div id="blocks" class="column" style="flex-basis: 500px">
+          <div class="block-heading">Blocks</div>
+        </div>
+      </div>
+
+      <div class="column editor-clm">
+        <div id="blocks-container"></div>
+        <div id="basic-actions" class="gjs-pn-panels">
+          <button class="tooltip" id="block-button">
+            <i class="fa fa-plus" id="block-icon"></i>
+            <span class="tooltiptext">Blocks</span>
+          </button>
+        </div>
+        <div id="gjs2" style="overflow: hidden">
+          <div
+            style="padding: 25px 50px; margin: 50px 50px 0"
+            data-gjs-name="Text1"
+          >
+            Text 1
+          </div>
+          <div style="padding: 25px 50px; margin: 0 50px" data-gjs-name="Text2">
+            Text 2
+          </div>
+        </div>
+      </div>
+
+      <div id="layers" class="column" style="flex-basis: 500px">
+        <div class="layer-heading">Layers</div>
+        <div id="layers-container"></div>
+      </div>
+    </div>
+
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/grapesJs/grapes.min.js"></script>
+    <script src="./assets/grapesJs/grapes-preset-webpage.min.js"></script>
+    <script src="./assets/grapesJs/grapes-basic-blocks.min.js"></script>
+    <script src="./assets/grapesJs/grapes-plugin-forms.min.js"></script>
+    <script src="./assets/grapesJs/grapes-plugin-export.min.js"></script>
+    <script src="./assets/grapesJs/grapes-custom-code-plugin.min.js"></script>
+    <script src="./assets/grapesJs/grapes-code-editor.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script></script>
+  </body>
+</html>
