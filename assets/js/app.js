@@ -244,6 +244,13 @@ var editor = grapesjs.init({
       attributes: { title: "Show Blocks" },
     },
   ],
+  canvas: {
+    styles: ["/assets/boostrap/bootstrap5-3-2.css"],
+    scripts: [
+      "/assets/boostrap/bootstrap5-3-2.min.js",
+      "/assets/boostrap/bootstrap.bundle.min.js",
+    ],
+  },
 });
 
 // Get the block button element
@@ -371,4 +378,6 @@ editor.on("load", function () {
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
+
+  Blocks(editor);
 });
