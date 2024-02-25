@@ -225,3 +225,13 @@ html {
 .nav-link {
   color: #007bff;
 }
+
+.cm-s-hopscotch.CodeMirror,
+.CodeMirror-linenumbers {
+  background: #242a3b;
+  color: #d5d3d5;
+}
+
+.gjs-mdl-title {
+  white-space: pre-line;
+}

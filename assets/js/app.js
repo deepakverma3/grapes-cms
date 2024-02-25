@@ -6,7 +6,7 @@ var editor = grapesjs.init({
     embedAsBase64: true,
   },
   selectorManager: { componentFirst: true },
-  plugins: ["gjs-blocks-basic"],
+  plugins: ["gjs-blocks-basic", "grapesjs-plugin-export"],
   layerManager: {
     appendTo: "#layers-container",
   },
@@ -169,16 +169,17 @@ var editor = grapesjs.init({
           },
           {
             id: "view-code",
-            command: {
-              run(editor, sender, opts = {}) {
-                // Custom logic to view the generated code
-                const code = editor.getHtml();
-                console.log("Generated Code:", code);
-              },
+            className: "fa fa-code",
+            command: "export-template",
+            attributes: { title: "View code" },
+          },
+          {
+            id: "import",
+            className: "fa fa-download",
+            command: "html-import",
+            attributes: {
+              title: "Import Your Template",
             },
-            context: "view-code",
-            attributes: { title: "View Code" },
-            className: "fa fa-code", // Font Awesome icon for code
           },
           {
             id: "undo",
