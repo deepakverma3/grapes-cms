@@ -18,6 +18,17 @@
         <div id="style-manager-container"></div>
         <div id="blocks" class="editor-column" style="flex-basis: 350px">
           <div class="block-heading">Blocks</div>
+          <div id="custom-block-creator" style="display: none">
+            <label for="block-name">Block Name:</label>
+          </div>
+        </div>
+        <div class="save-changes">
+          <button class="btn btn-sm btn-primary" onclick="viewSite()">
+            View Site
+          </button>
+          <button class="btn btn-sm btn-success" onclick="publishChanges()">
+            Publish
+          </button>
         </div>
       </div>
 
@@ -60,10 +71,23 @@
     <script src="./assets/grapesJs/grapes-plugin-export.min.js"></script>
     <script src="./assets/grapesJs/grapes-custom-code-plugin.min.js"></script>
     <script src="./assets/grapesJs/grapes-code-editor.min.js"></script>
-    <script src="./assets/js/app.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
     <script src="./assets/grapesJs/Blocks/blocks.js"></script>
     <script src="./assets/boostrap/bootstrap5-3-2.min.js"></script>
     <script src="./assets/boostrap/bootstrap.bundle.min.js"></script>
     <script src="./assets/grapesJs/Import-code/import-code.js"></script>
+    <script>
+      // $.getJSON("./assets/js/custom-blocks.json", function (data) {
+      //   data.forEach((item, index) => {
+      //     const { label, media, category, content } = item;
+      //     editor.BlockManager.add(label, {
+      //       label: label,
+      //       media: media,
+      //       category: category,
+      //       content: content,
+      //     });
+      //   });
+      // });
+    </script>
   </body>
 </html>

@@ -235,3 +235,10 @@ html {
 .gjs-mdl-title {
   white-space: pre-line;
 }
+
+.save-changes {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}

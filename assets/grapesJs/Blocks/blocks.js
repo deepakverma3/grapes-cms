@@ -55,7 +55,7 @@ function Blocks(editor) {
   });
 
   // Define additional styles for the block preview
-  var style = document.createElement("style");
+  let style = document.createElement("style");
   style.innerHTML = `
     .navbar-preview {
         background-color: #f8f9fa;

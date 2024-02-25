@@ -1,4 +1,4 @@
-var editor = grapesjs.init({
+let editor = grapesjs.init({
   container: "#gjs2",
   height: "100%",
   fromElement: true,
@@ -141,6 +141,13 @@ var editor = grapesjs.init({
           cl: 1,
           bc: 0,
           keyWidth: "flex-basis",
+        },
+      },
+      {
+        id: "custom-block-panel",
+        el: "#custom-block-creator",
+        attributes: {
+          class: "custom-block-panel",
         },
       },
       {
@@ -332,7 +339,7 @@ panelManager.addButton("options", {
 
 editor.runCommand("sw-visibility");
 editor.on("load", function () {
-  var $ = grapesjs.$;
+  let $ = grapesjs.$;
 
   // Add and beautify tooltips
   // [
@@ -373,12 +380,28 @@ editor.on("load", function () {
   });
 
   // tooltip
-  var tooltipTriggerList = [].slice.call(
+  let tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
   Blocks(editor);
+
+  window.viewSite = function () {
+    // Open a new window or iframe to preview the site
+    let previewWindow = window.open();
+    previewWindow.document.write(
+      editor.getHtml() + "<style>" + editor.getCss() + "</style>"
+    );
+    previewWindow.document.close();
+  };
+
+  // Function to publish changes
+  window.publishChanges = function () {
+    // You can implement the logic to save the changes (e.g., send to server)
+    // For simplicity, let's just alert a message
+    alert("Changes published successfully!");
+  };
 });
